@@ -1,4 +1,4 @@
-name: CMake
+name: use-build-test
 
 on:
   workflow_dispatch:
@@ -18,5 +18,5 @@ jobs:
     - name: Checkout-Repo
       uses: actions/checkout@v3
     - name: Use-Build
-      uses: actions/just-build@v1
+      uses: .github/workflows/just-build.yml
       
