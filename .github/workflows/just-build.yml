@@ -1,0 +1,24 @@
+name: just-build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory. Equivalent to `mkdir ./build`, `cd build`, `cmake ..`
+      run: cmake -B ${{github.workspace}}/build
+
+    - name: Build
+      # Build your program with the given. Equivalent to running make in the build directory.
+      run: cmake --build ${{github.workspace}}/build
+      
